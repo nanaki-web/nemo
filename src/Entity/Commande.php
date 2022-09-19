@@ -70,9 +70,6 @@ class Commande
     #[ORM\ManyToOne]
     private ?Livraison $livraison = null;
 
-    #[ORM\ManyToMany(targetEntity: Commercial::class, inversedBy: 'commandes')]
-    private Collection $commercial;
-
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?Client $client = null;
 

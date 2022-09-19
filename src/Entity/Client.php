@@ -62,6 +62,9 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commande::class)]
     private Collection $commandes;
 
+    #[ORM\ManyToOne(inversedBy: 'clients')]
+    private ?Commercial $commercial = null;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -283,6 +286,18 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
                 $commande->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCommercial(): ?Commercial
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?Commercial $commercial): self
+    {
+        $this->commercial = $commercial;
 
         return $this;
     }
