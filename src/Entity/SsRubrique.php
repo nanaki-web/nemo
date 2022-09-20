@@ -24,9 +24,16 @@ class SsRubrique
     #[ORM\OneToMany(mappedBy: 'ssRubrique', targetEntity: self::class)]
     private Collection $rubrique;
 
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'ssRubriques')]
+    private ?self $parent = null;
+
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
+    private Collection $ssRubriques;
+
     public function __construct()
     {
         $this->rubrique = new ArrayCollection();
+        $this->ssRubriques = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +89,48 @@ class SsRubrique
             // set the owning side to null (unless already changed)
             if ($rubrique->getSsRubrique() === $this) {
                 $rubrique->setSsRubrique(null);/////////////////////////////////////////////////////
+            }
+        }
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getSsRubriques(): Collection
+    {
+        return $this->ssRubriques;
+    }
+
+    public function addSsRubrique(self $ssRubrique): self
+    {
+        if (!$this->ssRubriques->contains($ssRubrique)) {
+            $this->ssRubriques->add($ssRubrique);
+            $ssRubrique->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSsRubrique(self $ssRubrique): self
+    {
+        if ($this->ssRubriques->removeElement($ssRubrique)) {
+            // set the owning side to null (unless already changed)
+            if ($ssRubrique->getParent() === $this) {
+                $ssRubrique->setParent(null);
             }
         }
 

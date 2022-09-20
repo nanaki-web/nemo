@@ -37,7 +37,7 @@ class Commande
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $totalTtc = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ['default'=>'CURRENT_TIMESTAMP'])]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 50)]
