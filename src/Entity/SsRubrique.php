@@ -19,7 +19,7 @@ class SsRubrique
     private ?string $nom = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'rubrique')]
-    private ?self $ssRubrique = null;
+    private ?self $ssRubrique = null; /////////////////////////////////////////////////////
 
     #[ORM\OneToMany(mappedBy: 'ssRubrique', targetEntity: self::class)]
     private Collection $rubrique;
@@ -48,12 +48,12 @@ class SsRubrique
 
     public function getSsRubrique(): ?self
     {
-        return $this->ssRubrique;
+        return $this->ssRubrique;/////////////////////////////////////////////////////
     }
 
     public function setSsRubrique(?self $ssRubrique): self
     {
-        $this->ssRubrique = $ssRubrique;
+        $this->ssRubrique = $ssRubrique;/////////////////////////////////////////////////////
 
         return $this;
     }
@@ -70,7 +70,7 @@ class SsRubrique
     {
         if (!$this->rubrique->contains($rubrique)) {
             $this->rubrique->add($rubrique);
-            $rubrique->setSsRubrique($this);
+            $rubrique->setSsRubrique($this);/////////////////////////////////////////////////////
         }
 
         return $this;
@@ -81,7 +81,7 @@ class SsRubrique
         if ($this->rubrique->removeElement($rubrique)) {
             // set the owning side to null (unless already changed)
             if ($rubrique->getSsRubrique() === $this) {
-                $rubrique->setSsRubrique(null);
+                $rubrique->setSsRubrique(null);/////////////////////////////////////////////////////
             }
         }
 
