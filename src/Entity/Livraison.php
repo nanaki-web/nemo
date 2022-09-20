@@ -17,7 +17,7 @@ class Livraison
     #[ORM\Column(length: 50)]
     private ?string $numero = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE,options: ['default'=> 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeInterface $date = null;
 
     public function getId(): ?int

@@ -37,14 +37,14 @@ class Commande
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $totalTtc = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, options: ['default'=>'CURRENT_TIMESTAMP'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 50)]
     private ?string $adresse_livraison = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $codePostal_factutation = null;
+    private ?string $codePostal_facturation = null;
 
     #[ORM\Column(length: 50)]
     private ?string $ville_facturation = null;
