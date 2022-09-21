@@ -6,6 +6,7 @@ use App\Repository\SsRubriqueRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[ORM\Entity(repositoryClass: SsRubriqueRepository::class)]
 class SsRubrique
@@ -19,16 +20,14 @@ class SsRubrique
     private ?string $nom = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'rubrique')]
+    #[JoinColumn(onDelete:'CASCADE')]
     private ?self $ssRubrique = null; /////////////////////////////////////////////////////
 
     #[ORM\OneToMany(mappedBy: 'ssRubrique', targetEntity: self::class)]
     private Collection $rubrique;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'ssRubriques')]
-    private ?self $parent = null;
-
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
-    private Collection $ssRubriques;
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -95,45 +94,19 @@ class SsRubrique
         return $this;
     }
 
-    public function getParent(): ?self
+    public function getSlug(): ?string
     {
-        return $this->parent;
+        return $this->slug;
     }
 
-    public function setParent(?self $parent): self
+    public function setSlug(string $slug): self
     {
-        $this->parent = $parent;
+        $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, self>
-     */
-    public function getSsRubriques(): Collection
-    {
-        return $this->ssRubriques;
-    }
+    
 
-    public function addSsRubrique(self $ssRubrique): self
-    {
-        if (!$this->ssRubriques->contains($ssRubrique)) {
-            $this->ssRubriques->add($ssRubrique);
-            $ssRubrique->setParent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSsRubrique(self $ssRubrique): self
-    {
-        if ($this->ssRubriques->removeElement($ssRubrique)) {
-            // set the owning side to null (unless already changed)
-            if ($ssRubrique->getParent() === $this) {
-                $ssRubrique->setParent(null);
-            }
-        }
-
-        return $this;
-    }
+  
 }

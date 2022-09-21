@@ -35,7 +35,7 @@ class Commercial implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 20)]
     private ?string $telephone = null;
 
     #[ORM\OneToMany(mappedBy: 'commercial', targetEntity: Client::class)]
