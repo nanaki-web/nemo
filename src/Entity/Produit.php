@@ -19,7 +19,7 @@ class Produit
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 100)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]

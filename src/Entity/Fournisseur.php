@@ -22,11 +22,14 @@ class Fournisseur
     #[ORM\Column(length: 5)]
     private ?string $codePostal = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 20)]
     private ?string $telephone = null;
 
     #[ORM\Column(length: 50)]
     private ?string $email = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $ville = null;
 
     public function getId(): ?int
     {
@@ -89,6 +92,18 @@ class Fournisseur
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }

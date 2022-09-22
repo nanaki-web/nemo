@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-use App\Entity\Client;
 use App\Entity\Commercial;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -31,8 +30,6 @@ class CommercialFixtures extends Fixture
         $user->setTelephone('0236548598');
         
         
-        
-
         $manager->persist($user);
 
         $faker = Factory::create('fr_FR');
