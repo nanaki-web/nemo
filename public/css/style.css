@@ -1,23 +1,32 @@
-body{
+body {
     background-color: #d9d9e2;
 
 }
 
-.logo{
+.logo {
     margin-right: 2rem;
 }
 
-.btn-recherche{
+.btn-recherche {
     margin-right: 1rem;
 }
 
-#icone-contact{
-    font-size:4rem;
+#icone-contact {
+    font-size: 4rem;
 }
 
-#icone-achat{
-    font-size:4rem;
+#icone-achat {
+    font-size: 4rem;
 }
 
 
 
+.line{
+    
+    margin: auto;
+   
+}
+li{
+    font-size: 40px;
+    border-left: 1px solid black;
+}
