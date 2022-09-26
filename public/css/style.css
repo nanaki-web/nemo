@@ -1,5 +1,5 @@
 body {
-    background-color: #d9d9e2;
+    background-color: #A1BAE0;
 
 }
 
@@ -24,9 +24,33 @@ body {
 .line{
     
     margin: auto;
-   
 }
-li{
-    font-size: 40px;
+.li2{
+    font-size: 25px;
     border-left: 1px solid black;
+}
+
+.li-a{
+    border-right: 1px solid black;
+
+}
+.container
+{
+    background-color: 5773D6;
+    background-color: #becfea;
+}
+.footer
+{
+    background-color: #5773D6;
+    height: 200px;
+
+}
+.couleur{
+    color: black;
+    
+}
+
+.miniature{
+    height: 200px;
+    max-width: 200px;
 }

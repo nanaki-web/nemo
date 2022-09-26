@@ -28,7 +28,7 @@ class ProduitsFixtures extends Fixture
             $prod->setStock($faker->numberBetween(10, 100));
             $prod->setCoef(2);
             $prod->setReference($faker->bothify('?????-#####'));
-            $prod->setPhoto('photo');
+            $prod->setPhoto('photo.png');
             
             $prod->setFournisseur($founis[mt_rand(0,count($founis)-1)]);//recupere le repository et on compte le nombre de fournisseur et on choisi aléatoirement l'id .
             $manager->persist($prod);
