@@ -39,6 +39,23 @@ class ProduitRepository extends ServiceEntityRepository
         }
     }
 
+   
+    /**
+     * @return Produit[] Returns an array of Produit objects
+     */
+    public function dernierProduit()
+    {
+        return $this->createQueryBuilder('p')
+                    ->andWhere('p.active = 1')
+                    ->orderBy('p.date_creation','DESC')
+                    ->setMaxResults(3)
+                    ->getQuery()
+                    ->getResult()
+                    ;
+    }
+    
+
+
 //    /**
 //     * @return Produit[] Returns an array of Produit objects
 //     */

@@ -29,6 +29,8 @@ class ProduitsFixtures extends Fixture
             $prod->setCoef(2);
             $prod->setReference($faker->bothify('?????-#####'));
             $prod->setPhoto('photo.png');
+            $prod->setDateCreation($faker->dateTimeBetween('-1 week', '+1 week'));
+
             
             $prod->setFournisseur($founis[mt_rand(0,count($founis)-1)]);//recupere le repository et on compte le nombre de fournisseur et on choisi aléatoirement l'id .
             $manager->persist($prod);

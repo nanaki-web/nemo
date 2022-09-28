@@ -19,6 +19,9 @@ body {
     font-size: 4rem;
 }
 
+#jean{
+    margin-bottom: 2rem;
+}
 
 
 .line{
@@ -53,4 +56,14 @@ body {
 .miniature{
     height: 200px;
     max-width: 200px;
+}
+
+/*Accueil*/
+.trois-img{
+    display: flex;
+    justify-content: space-around;
+}
+
+.promotion{
+   margin-top: 2rem;
 }

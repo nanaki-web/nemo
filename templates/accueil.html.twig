@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block body %}
+
+<style>
+    body {
+        background-image: url("https://cdn.discordapp.com/attachments/984729140278202388/1022117639365070928/fish-31.gif");
+    }
+    .main{
+        background-color: rgba(203, 241, 250,0.5);
+        z-index: index -1;;
+    }
+</style>
+
+
+
+    <div class="trois-img row justify-content-around">
+
+        <div class="d-flex" style="margin-left: 25%;">
+            <img class="imgPro img-fluid" height="300px" width="600px" src="{{asset('images/neritina.png' )}}"
+                alt="image-promotion">
+
+
+            <div class="d-flex flex-column">
+                <a href="#"><img class="imgCat img-fluid " width="50%" src="{{asset('images/Red-Cherry.jpg' )}}"
+                        alt=""></a>
+                <a href="#"><img class="imgCat img-fluid " width="50%" src="{{asset('images/poisson_clown.jpg')}}"
+                        alt=""></a>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h1 class="promotion">Promotions-Nouveautés</h1>
+        {% for produit in produits %}
+
+        <div class="card p-0 m-3 " style="width: 18rem;">
+            <img class="card-img-top" src="{{asset('images/' ~ produit.photo)}}" alt="{{produit.photo}}">
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.nom }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">{{ produit.description }}</p>
+                <p>Référence : {{ produit.reference}}</p>
+                <p>{{ produit.prix}} €</p>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

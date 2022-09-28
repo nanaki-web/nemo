@@ -50,6 +50,11 @@ class Produit
     #[ORM\ManyToMany(targetEntity: SsRubrique::class)]
     private Collection $ssRubrique;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date_creation = null;
+
+    
+
 
 
     public function __construct()
@@ -221,4 +226,18 @@ class Produit
 
         return $this;
     }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->date_creation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $date_creation): self
+    {
+        $this->date_creation = $date_creation;
+
+        return $this;
+    }
+
+    
 }
