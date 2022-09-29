@@ -19,20 +19,28 @@ class SsRubrique
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'rubrique')]
-    #[JoinColumn(onDelete:'CASCADE')]
-    private ?self $ssRubrique = null; /////////////////////////////////////////////////////
-
-    #[ORM\OneToMany(mappedBy: 'ssRubrique', targetEntity: self::class)]
-    private Collection $rubrique;
-
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'RubriqueParent')]
+    private ?self $rubriqueParent = null;
+
+    #[ORM\OneToMany(mappedBy: 'rubriqueParent', targetEntity: self::class)]
+    private Collection $RubriqueParent;
+
+    #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Produit::class)]
+    private Collection $produits;
+
+
+
+
     public function __construct()
     {
-        $this->rubrique = new ArrayCollection();
+        
         $this->ssRubriques = new ArrayCollection();
+        $this->produits = new ArrayCollection();
+        $this->RubriqueParent = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -64,36 +72,6 @@ class SsRubrique
         return $this;
     }
 
-    /**
-     * @return Collection<int, self>
-     */
-    public function getRubrique(): Collection
-    {
-        return $this->rubrique;
-    }
-
-    public function addRubrique(self $rubrique): self
-    {
-        if (!$this->rubrique->contains($rubrique)) {
-            $this->rubrique->add($rubrique);
-            $rubrique->setSsRubrique($this);/////////////////////////////////////////////////////
-        }
-
-        return $this;
-    }
-
-    public function removeRubrique(self $rubrique): self
-    {
-        if ($this->rubrique->removeElement($rubrique)) {
-            // set the owning side to null (unless already changed)
-            if ($rubrique->getSsRubrique() === $this) {
-                $rubrique->setSsRubrique(null);/////////////////////////////////////////////////////
-            }
-        }
-
-        return $this;
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -110,6 +88,80 @@ class SsRubrique
     {
         return $this->nom;
     }
+
+    public function getRubriqueParent(): ?self
+    {
+        return $this->rubriqueParent;
+    }
+
+    public function setRubriqueParent(?self $rubriqueParent): self
+    {
+        $this->rubriqueParent = $rubriqueParent;
+
+        return $this;
+    }
+
+    public function addRubriqueParent(self $rubriqueParent): self
+    {
+        if (!$this->RubriqueParent->contains($rubriqueParent)) {
+            $this->RubriqueParent->add($rubriqueParent);
+            $rubriqueParent->setRubriqueParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRubriqueParent(self $rubriqueParent): self
+    {
+        if ($this->RubriqueParent->removeElement($rubriqueParent)) {
+            // set the owning side to null (unless already changed)
+            if ($rubriqueParent->getRubriqueParent() === $this) {
+                $rubriqueParent->setRubriqueParent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produit>
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits->add($produit);
+            $produit->setRubrique($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produit $produit): self
+    {
+        if ($this->produits->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getRubrique() === $this) {
+                $produit->setRubrique(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
+
+    
+    
+
+    
+
+    
+  
 
     
 

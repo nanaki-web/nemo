@@ -37,4 +37,6 @@ class SsRubriqueFixtures extends Fixture
 
         return $ssRubrique;
     }
+
+    
 }

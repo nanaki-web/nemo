@@ -47,20 +47,18 @@ class Produit
     #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'produit')]
     private Collection $commandes;
 
-    #[ORM\ManyToMany(targetEntity: SsRubrique::class)]
-    private Collection $ssRubrique;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_creation = null;
 
-    
-
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    private ?SsRubrique $rubrique = null;
 
 
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
-        $this->ssRubrique = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -111,7 +109,7 @@ class Produit
 
     public function setActive(bool $active): self
     {
-        $this->active = $active;
+        $this->active = $active;$this->ssRubrique = new ArrayCollection();
 
         return $this;
     }
@@ -203,29 +201,7 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, SsRubrique>
-     */
-    public function getSsRubrique(): Collection
-    {
-        return $this->ssRubrique;
-    }
 
-    public function addSsRubrique(SsRubrique $ssRubrique): self
-    {
-        if (!$this->ssRubrique->contains($ssRubrique)) {
-            $this->ssRubrique->add($ssRubrique);
-        }
-
-        return $this;
-    }
-
-    public function removeSsRubrique(SsRubrique $ssRubrique): self
-    {
-        $this->ssRubrique->removeElement($ssRubrique);
-
-        return $this;
-    }
 
     public function getDateCreation(): ?\DateTimeInterface
     {
@@ -239,5 +215,18 @@ class Produit
         return $this;
     }
 
+    public function getRubrique(): ?SsRubrique
+    {
+        return $this->rubrique;
+    }
+
+    public function setRubrique(?SsRubrique $rubrique): self
+    {
+        $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    
     
 }

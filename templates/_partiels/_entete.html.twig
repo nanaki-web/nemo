@@ -1,67 +1,68 @@
-<div class="main">
-<div class="row">
-    <nav class="navbar navbar-expand-lg ">
+<div class="container">
+    <div class="row">
 
         <div class="logo">
-            <a class="navbar-brand" href="#"><img class="logo" src="{{asset('images/Logo.png')}}" width="60" height="60"
-                    alt="logo.png"></a>
+            <a class="navbar-brand navbar-collapse" href="{{path('app_accueil')}}"><img class="logo"
+                    src="{{asset('images/Logo.png')}}" width="60" height="60" alt="logo.png"></a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="col-8">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">rechercher</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="contact_achat d-flex">
-                <p id="icone-contact"><i class="fa-solid fa-user me-4 d-flex"></i></p>
-                <ul class="navbar-nav ">
-                    <div class="d-flex flex-column">
-                        <li class="li1 nav-item"><a class="nav-link" href="#">Mon compte</a></li>
-                        <li class="li1 nav-item"><a class="nav-link" href="#">Mon inscription</a></li>
-                    </div>
-                </ul>
-                <p id="icone-achat"><i class="fa-solid fa-cart-shopping"></i></p>
-                <div class="d-flex flex-column">
-                    <p class="mt-2 ms-2">Mon panier</p>
-                    <p class="ms-2">0,00€</p>
+        
+        <nav class="navbar navbar-expand-lg ">
+           
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="col-8">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">rechercher</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
-
-
-<div class="row">
-    <div class="col">
-        <div class="jean">
-            <nav class="navbar navbar-expand-lg ">
-                <div class="collapse navbar-collapse" id="jean">
-                    <ul class="line navbar-nav ">
-                        <li class="li2 1 nav-item">
-                            <a class="nav-link" href="#">Accueil</a>
-                        </li>
-                        </li>
-                        <li class="li2 nav-item">
-                            <a class="nav-link" href="#">Eau douce</a>
-                        </li>
-                        <li class="li2 nav-item">
-                            <a class="nav-link" href="#">Eau de mer</a>
-                        </li>
-                        <li class="li2 nav-item">
-                            <a class="li-a nav-link" href="#">Contact</a>
-                        </li>
+            <div class="col-6">
+                <div class="contact_achat d-flex">
+                    <p id="icone-contact"><i class="fa-solid fa-user me-4 d-flex"></i></p>
+                    <ul class="navbar-nav ">
+                        <div class="d-flex flex-column">
+                            <li class="li1 nav-item"><a class="nav-link" href="{{path('app_login')}}">Mon compte</a>
+                            </li>
+                            <li class="li1 nav-item"><a class="nav-link" href="{{path('app_register')}}">Mon
+                                    inscription</a></li>
+                        </div>
                     </ul>
+                    <p id="icone-achat"><i class="fa-solid fa-cart-shopping"></i></p>
+                    <div class="d-flex flex-column">
+                        <p class="mt-2 ms-2">Mon panier</p>
+                        <p class="ms-2">0,00€</p>
+                    </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="jean">
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="collapse navbar-collapse" id="jean">
+                        <ul class="line navbar-nav ">
+                            <li class="li2 1 nav-item">
+                                <a class="nav-link" href="#">Accueil</a>
+                            </li>
+                            </li>
+                            <li class="li2 nav-item">
+                                <a class="nav-link" href="#">Eau douce</a>
+                            </li>
+                            <li class="li2 nav-item">
+                                <a class="nav-link" href="#">Eau de mer</a>
+                            </li>
+                            <li class="li2 nav-item">
+                                <a class="li-a nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
 </div>
 
-
-
-
-
-
+</header>

@@ -39,7 +39,7 @@ body {
 }
 .container
 {
-    background-color: 5773D6;
+   
     background-color: #becfea;
 }
 .footer
@@ -63,7 +63,7 @@ body {
     display: flex;
     justify-content: space-around;
 }
-
+/*
 .promotion{
    margin-top: 2rem;
-}
+}*/
