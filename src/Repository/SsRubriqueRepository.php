@@ -39,15 +39,20 @@ class SsRubriqueRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return SsRubrique[] Returns an array of SsRubrique objects
-//     */
+
+
+
+
+
+
+
+
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
+//        return $this->createQueryBuilder('l')
+//            ->andWhere('l.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
+//            ->orderBy('l.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()

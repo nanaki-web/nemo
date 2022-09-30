@@ -32,7 +32,7 @@ class SsRubriqueFixtures extends Fixture
         $ssRubrique = new SsRubrique();
         $ssRubrique->setNom($nom);
         $ssRubrique->setSlug($this->slugger->slug($ssRubrique->getNom())->lower());
-        $ssRubrique->setSsRubrique($rubrique);
+        $ssRubrique->setRubriqueParent($rubrique);
         $manager->persist($ssRubrique);
 
         return $ssRubrique;

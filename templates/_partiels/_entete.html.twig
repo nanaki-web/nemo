@@ -47,10 +47,21 @@
                             <li class="li2 1 nav-item">
                                 <a class="nav-link" href="#">Accueil</a>
                             </li>
-                            </li>
+                            {% for Ssrubrique in Ssrubriques %}
+                            {% if Ssrubrique.rubriqueParent == null %} 
                             <li class="li2 nav-item">
-                                <a class="nav-link" href="#">Eau douce</a>
+                                {% set rub = Ssrubrique | lower | replace({' ':''})%}
+                                 <a class="nav-link" href="{{ path( 'app_'~rub) }}">{{ Ssrubrique.nom}}</a> 
+                                <a class="nav-link" href="">{{ Ssrubrique.nom }}</a>
+                              
+
                             </li>
+                            {% else %}   
+                            
+                            {% endif %} 
+                                
+                            {% endfor %}
+                            
                             <li class="li2 nav-item">
                                 <a class="nav-link" href="#">Eau de mer</a>
                             </li>
