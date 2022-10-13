@@ -47,12 +47,13 @@
                             <li class="li2 1 nav-item">
                                 <a class="nav-link" href="#">Accueil</a>
                             </li>
-                            {% for Ssrubrique in Ssrubriques %}
+                            {# pour rechercher tout les rubriques parent  #}
+                            {% for Ssrubrique in allRub %}
                             {% if Ssrubrique.rubriqueParent == null %} 
                             <li class="li2 nav-item">
                                 {% set rub = Ssrubrique | lower | replace({' ':''})%}
-                                 <a class="nav-link" href="{{ path( 'app_'~rub) }}">{{ Ssrubrique.nom}}</a> 
-                                <a class="nav-link" href="">{{ Ssrubrique.nom }}</a>
+                                <a class="nav-link" href="{{ path( 'app_parent',{slug:Ssrubrique.slug}) }}">{{ Ssrubrique.nom}}</a> 
+                                 {# <a class="nav-link" href="">{{ Ssrubrique.nom }}</a> #}
                               
 
                             </li>
@@ -62,9 +63,7 @@
                                 
                             {% endfor %}
                             
-                            <li class="li2 nav-item">
-                                <a class="nav-link" href="#">Eau de mer</a>
-                            </li>
+                            
                             <li class="li2 nav-item">
                                 <a class="li-a nav-link" href="#">Contact</a>
                             </li>

@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for rub in Ssrubriques %}
+    <p>{{rub.nom}}</p>
+{% endfor %}
+{% endblock %}

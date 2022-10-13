@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Controller;
 
+use App\Entity\SsRubrique;
 use App\Repository\SsRubriqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,11 +11,16 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/categorie')]
 class CategoriesController extends AbstractController
 {
-    #[Route('/parent/{id}', name: 'app_parent', methods: ['GET'])]
-    public function parent(SsRubriqueRepository $ssRubriqueRepository,$id): Response
+    
+    #[Route('/parent/{slug}', name: 'app_parent', methods: ['GET'])]
+    public function parent(SsRubriqueRepository $ssRubriqueRepository,$slug): Response
     {
-        return $this->render('app_entete.html.twig', [
-            'Ssrubrique' => $ssRubriqueRepository->find($id),
+        $allRub = $ssRubriqueRepository->findAll();
+        $ssRubriques = $ssRubriqueRepository->findBy(['slug' => $slug]);
+//dd($ssRubrique);
+        return $this->render('ssRubrique.html.twig', [
+            'Ssrubriques' => $ssRubriques,
+            'allRub' => $allRub
             
         ]);
     }
@@ -28,6 +35,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+    
     
 }
 
