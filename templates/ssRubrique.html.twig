@@ -1,17 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {# {% for rub in allRub %}
-    {% if  Ssrubrique.rubriqueParent != null  %}
-    <p>{{rubriqueParent.nom}}</p>
-    {% endif %}
+	{# {% for rub in allRub %}
+	    {% if  Ssrubrique.rubriqueParent != null  %}
+	    <p>{{rubriqueParent.nom}}</p>
+	    {% endif %}
+	
+	
+	    
+	    
+	    
+	{% endfor %} #}
+	<section class="container">
+		<div class="row">
+			<div class="col6">
+				{% for enfant in enfants %}
 
-    
-    
-    
-    
-{% endfor %} #}
-{% for enfant in enfants %}
-    <p>{{enfant.nom}}</p>
-{% endfor %}
+
+					<p>{{enfant.nom}}</p>
+				{% endfor %}
+			</div>
+
+		</div>
+	</section>
+
 {% endblock %}
