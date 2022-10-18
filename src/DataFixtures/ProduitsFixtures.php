@@ -24,6 +24,7 @@ class ProduitsFixtures extends Fixture implements DependentFixtureInterface// De
         $founis = $fourniRepo->findAll();//recupere tout l'objet
         $ssRubriqueRepo = $manager->getRepository(SsRubrique::class);
         $ssRubrique = $ssRubriqueRepo->findAll();
+        
 
         for($i=1;$i<=10;$i++)
         {
@@ -40,7 +41,13 @@ class ProduitsFixtures extends Fixture implements DependentFixtureInterface// De
 
             
             $prod->setFournisseur($founis[mt_rand(0,count($founis)-1)]);//recupere le repository et on compte le nombre de fournisseur et on choisi aléatoirement l'id .
-            $prod->setRubrique($ssRubrique[mt_rand(0,count($ssRubrique)-1)]);
+            
+            if($ssRubrique!=null)
+            {
+                $prod->setRubrique($ssRubrique[mt_rand(0,count($ssRubrique)-1)]);
+                
+            }
+            
             $manager->persist($prod);
 
 

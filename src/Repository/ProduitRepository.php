@@ -80,4 +80,22 @@ class ProduitRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function findByRubParent($id){
+    $conn = $this->getEntityManager()->getConnection();
+
+        $sql = /*'
+            SELECT * FROM produit p
+            JOIN ss_rubrique r ON p.rubrique_id = r.id
+            WHERE rubrique_parent_id = :id
+            ';*/
+
+            'SELECT * FROM produit WHERE rubrique_id In (SELECT id FROM ss_rubrique WHERE rubrique_parent_id = (SELECT id FROM ss_rubrique where id = :id ))limit 3';
+
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery(['id' => $id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+}
 }

@@ -31,6 +31,9 @@ class SsRubrique
     #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Produit::class)]
     private Collection $produits;
 
+    #[ORM\Column(length: 255)]
+    private ?string $photo = null;
+
 
 
 
@@ -149,6 +152,18 @@ class SsRubrique
                 $produit->setRubrique(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

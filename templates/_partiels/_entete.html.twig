@@ -45,7 +45,7 @@
                     <div class="collapse navbar-collapse" id="jean">
                         <ul class="line navbar-nav ">
                             <li class="li2 1 nav-item">
-                                <a class="nav-link" href="#">Accueil</a>
+                                <a class="nav-link" href={{path('app_accueil')}}>Accueil</a>
                             </li>
                             {# pour rechercher tout les rubriques parent  #}
                             {% for Ssrubrique in allRub %}
@@ -62,7 +62,6 @@
                             {% endif %} 
                                 
                             {% endfor %}
-                            
                             
                             <li class="li2 nav-item">
                                 <a class="li-a nav-link" href="#">Contact</a>

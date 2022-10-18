@@ -16,11 +16,13 @@ class AccueilController extends AbstractController
     public function index(ProduitRepository $produitRepository,SsRubriqueRepository $ssRubriqueRepository): Response
     {
 
+        
         $ssRubriques = $ssRubriqueRepository->findAll();
+        
        // dd($ssRubriques);
         return $this->render('accueil.html.twig', [
             'produits' => $produitRepository->dernierProduit(),
-            'Ssrubriques' => $ssRubriques
+            'allRub' => $ssRubriques
             
         ]);
     }

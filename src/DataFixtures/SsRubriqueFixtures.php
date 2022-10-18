@@ -33,6 +33,7 @@ class SsRubriqueFixtures extends Fixture
         $ssRubrique->setNom($nom);
         $ssRubrique->setSlug($this->slugger->slug($ssRubrique->getNom())->lower());
         $ssRubrique->setRubriqueParent($rubrique);
+        $ssRubrique->setPhoto('photo.png');
         $manager->persist($ssRubrique);
 
         return $ssRubrique;

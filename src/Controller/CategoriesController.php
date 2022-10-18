@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\SsRubrique;
+use App\Repository\ProduitRepository;
 use App\Repository\SsRubriqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,19 +14,23 @@ class CategoriesController extends AbstractController
 {
     //je lui donne une route en utilisant le slug
     #[Route('/parent/{slug}', name: 'app_parent', methods: ['GET'])]
-    public function parent(SsRubriqueRepository $ssRubriqueRepository,$slug): Response
+    public function parent(SsRubriqueRepository $ssRubriqueRepository,$slug,ProduitRepository $produitRepository): Response
     {
         $allRub = $ssRubriqueRepository->findAll();
         $ssRubriques = $ssRubriqueRepository->findOneBy(['slug' => $slug]);//filtre par le slug
         $enfants = $ssRubriqueRepository->findBy(['rubriqueParent' => $ssRubriques->getId()]);//recupere l'id des rubrique parent
        // $value = $ssRubriqueRepository->findBy(['rubriqueParent' => $idParent]);
-//dd($enfants);
+        //dd($ssRubriques);
         
-//dd($ssRubriqueId);
+$produits = $produitRepository->findByRubParent($ssRubriques->getId());
+
+//dd($produits);
+
         return $this->render('ssRubrique.html.twig', [
             'Ssrubriques' => $ssRubriques,
             'allRub' => $allRub,
-            'enfants' => $enfants
+            'enfants' => $enfants,
+            'rubprods' => $produits//recupere les produits par rubrique parent
             //'rubriqueParent' => $ssRubriqueRepository->parentId($value)
             
         ]);

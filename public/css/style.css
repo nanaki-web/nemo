@@ -63,7 +63,45 @@ body {
     display: flex;
     justify-content: space-around;
 }
-/*
-.promotion{
-   margin-top: 2rem;
-}*/
+
+
+/*Sous-catégorie*/
+.titre-rubrique{
+    display: inline-block;
+    background-color: #3486be;
+    width: 20rem;
+    padding: 1.125% 4%;
+    margin:0;
+    
+}
+/*lien sous rubrique*/
+.titre-2rubrique{
+    border-top: solid;
+    border-color: rgb(114, 113, 111);
+    padding-top : 3rem;
+    padding-bottom: 30px;
+    
+}
+
+/*image catégorie*/
+.img-catégorie{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    bottom: 40px;
+    right: 40px;
+    left:2px;
+}
+
+/*lien sous rubrique*/
+.lien-catégorie{
+    padding-left: 60px;
+}
+
+.puce-catégorie{
+    list-style-type: none;
+}
+
+.annonce-rub{
+    padding-bottom: 30px;
+}

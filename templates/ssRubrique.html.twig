@@ -1,27 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	{# {% for rub in allRub %}
-	    {% if  Ssrubrique.rubriqueParent != null  %}
-	    <p>{{rubriqueParent.nom}}</p>
-	    {% endif %}
-	
-	
-	    
-	    
-	    
-	{% endfor %} #}
 	<section class="container">
 		<div class="row">
-			<div class="col6">
+			<H1 class="titre-rubrique " style="width : 20rem">{{Ssrubriques.nom}}</H1>
+			<h2 class="titre-2rubrique mb-0">Sous-catégories</h2>
+			<div class="d-flex flex-row justify-content-evenly">
 				{% for enfant in enfants %}
+					<ul class="list-group ">
+						<li class="puce-catégorie">
 
-
-					<p>{{enfant.nom}}</p>
+							<a href="#" class="lien-catégorie list-group-item list-group-item-action">{{enfant.nom}}</a>
+							<img class="img-catégorie img-fluid" src="{{asset('images/' ~ enfant.photo)}}" alt="">
+						</li>
+					</ul>
 				{% endfor %}
 			</div>
-
 		</div>
 	</section>
+
+	<section class="annonce-rub container d-flex justify-content-evenly  " >
+		{% for rubprod in rubprods %}
+
+			<div class="card" style="width: 18rem;">
+				<img class="card-img-top" src="{{asset('images/' ~ rubprod.photo)}}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">{{ rubprod.nom }}</h5>
+					<p class="card-text">{{ rubprod.description }}</p>
+					<p class="card-text">Référence :
+						{{ rubprod.reference }}</p>
+					<p>{{ rubprod.prix}}
+						€</p>
+
+
+					<a href="#" class="btn btn-primary">En savoir plus
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+
 
 {% endblock %}
