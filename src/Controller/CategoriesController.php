@@ -19,10 +19,9 @@ class CategoriesController extends AbstractController
         $allRub = $ssRubriqueRepository->findAll();
         $ssRubriques = $ssRubriqueRepository->findOneBy(['slug' => $slug]);//filtre par le slug
         $enfants = $ssRubriqueRepository->findBy(['rubriqueParent' => $ssRubriques->getId()]);//recupere l'id des rubrique parent
-       // $value = $ssRubriqueRepository->findBy(['rubriqueParent' => $idParent]);
         //dd($ssRubriques);
         
-$produits = $produitRepository->findByRubParent($ssRubriques->getId());
+        $produits = $produitRepository->findByRubParent($ssRubriques->getId());
 
 //dd($produits);
 
@@ -31,23 +30,9 @@ $produits = $produitRepository->findByRubParent($ssRubriques->getId());
             'allRub' => $allRub,
             'enfants' => $enfants,
             'rubprods' => $produits//recupere les produits par rubrique parent
-            //'rubriqueParent' => $ssRubriqueRepository->parentId($value)
             
         ]);
     }
-
-
-    /*#[Route('/eauDouce', name: 'app_eaudouce', methods: ['GET'])]
-    public function index(SsRubriqueRepository $ssRubriqueRepository): Response
-    {
-        return $this->render('eauDouce.html.twig', [
-            'Ssrubriques' => $ssRubriqueRepository->findAll(),
-            
-        ]);
-    }*/
-
-    
-    
 }
 
 

@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Produit;
+use App\Entity\SsRubrique;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,8 +25,7 @@ class ProduitType extends AbstractType
             ->add('photo')
             ->add('fournisseur')
             ->add('commandes')
-            ->add('ssRubrique')
-        ;
+            ->add('rubrique' );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

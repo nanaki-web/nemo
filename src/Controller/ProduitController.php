@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
+use App\Repository\SsRubriqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,16 +15,40 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     #[Route('/', name: 'app_produit_index', methods: ['GET'])]
-    public function index(ProduitRepository $produitRepository): Response
+    public function index(ProduitRepository $produitRepository, SsRubriqueRepository $ssRubriqueRepository): Response
     {
+        $allRub = $ssRubriqueRepository->findAll();
         return $this->render('produit/index.html.twig', [
             'produits' => $produitRepository->findAll(),
+            'allRub' => $allRub,
+
+
+
         ]);
     }
 
-    #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ProduitRepository $produitRepository): Response
+    #[Route('/annonces/{id}', name: 'app_produit_annonces', methods: ['GET'])]
+    public function annonces(ProduitRepository $produitRepository, SsRubriqueRepository $ssRubriqueRepository,$id): Response
     {
+        $allRub = $ssRubriqueRepository->findAll();
+        $prodRub = $ssRubriqueRepository->findBy(['id' => $id]);
+        dd($allRub);
+        return $this->render('produit/annonce.html.twig', [
+            'produits' => $produitRepository->findAll(),
+            'allRub' => $allRub,
+            'prodRub' => $prodRub,
+
+
+
+        ]);
+    }
+
+    
+
+    #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, ProduitRepository $produitRepository, SsRubriqueRepository $ssRubriqueRepository): Response
+    {
+        $allRub = $ssRubriqueRepository->findAll();
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
@@ -37,14 +62,19 @@ class ProduitController extends AbstractController
         return $this->renderForm('produit/new.html.twig', [
             'produit' => $produit,
             'form' => $form,
+            'allRub' => $allRub
         ]);
     }
 
     #[Route('/{id}', name: 'app_produit_show', methods: ['GET'])]
-    public function show(Produit $produit): Response
+    public function show(Produit $produit, SsRubriqueRepository $ssRubriqueRepository): Response
     {
+        $allRub = $ssRubriqueRepository->findAll();
+
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            'allRub' => $allRub,
+
         ]);
     }
 
@@ -66,13 +96,20 @@ class ProduitController extends AbstractController
         ]);
     }
 
+
+    
+
     #[Route('/{id}', name: 'app_produit_delete', methods: ['POST'])]
     public function delete(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {
             $produitRepository->remove($produit, true);
         }
 
         return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
+
+   
 }
