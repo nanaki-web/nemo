@@ -10,7 +10,7 @@
 					<ul class="list-group ">
 						<li class="puce-catégorie">
 
-							<a href="#" class="lien-catégorie list-group-item list-group-item-action">{{enfant.nom}}</a>
+							<a href="{{path('app_produit_annonces',{id:enfant.id})}}" class="lien-catégorie list-group-item list-group-item-action">{{enfant.nom}}</a>
 							<img class="img-catégorie img-fluid" src="{{asset('images/' ~ enfant.photo)}}" alt="">
 						</li>
 					</ul>

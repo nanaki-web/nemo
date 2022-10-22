@@ -31,18 +31,32 @@ class ProduitController extends AbstractController
     public function annonces(ProduitRepository $produitRepository, SsRubriqueRepository $ssRubriqueRepository,$id): Response
     {
         $allRub = $ssRubriqueRepository->findAll();
-        $prodRub = $ssRubriqueRepository->findBy(['id' => $id]);
-        dd($allRub);
+        $listeannonces = $produitRepository->findBy(['rubrique' => $id]);
+        // dd($listeannonces);
         return $this->render('produit/annonce.html.twig', [
-            'produits' => $produitRepository->findAll(),
             'allRub' => $allRub,
-            'prodRub' => $prodRub,
+            'listeannonces' => $listeannonces,
+            // 'produit' => $produit,
 
 
 
         ]);
     }
 
+    #[Route('/details/{id}', name: 'details', methods: ['GET'])]
+    public function details(ProduitRepository $produitRepository, SsRubriqueRepository $ssRubriqueRepository,$id): Response
+    {
+        $allRub = $ssRubriqueRepository->findAll();
+        $listeannonces = $produitRepository->findBy(['rubrique' => $id]);
+        $produit = $produitRepository->findOneBy(['id'=>$id]);
+
+        return $this->render('produit/details.html.twig', [
+            /* $rubrique afficher les rubriques dans la navbar */
+            'allRub' => $allRub,
+            'listeannonces' => $listeannonces,
+            'produit' => $produit,
+        ]);
+    }
     
 
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]

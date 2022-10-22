@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-     {{ prodRub.nom }}
+
+	{% for row in listeannonces %}
+				{# CARD #}
+					<div class="carte card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<a href="#">
+									<img src="#">
+								</a>
+							</div>
+							<div class="col-md-8">
+								<div class="row card-body">
+									<a href="{{ path('details',{id:row.id})}}">
+										<h5 class="card-title">{{row.nom}}</h5>
+									</a>
+									<span id="spanprix">{{row.prix}}€</span>
+									{# STOCK #}
+									<div class="stock">
+									
+									</div>
+								</div>
+							</div>
+							{# FIN CARD #}
+						</div>
+					</div>
+				{% endfor %}
 {% endblock %}
