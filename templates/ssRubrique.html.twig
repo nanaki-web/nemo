@@ -23,18 +23,13 @@
 		{% for rubprod in rubprods %}
 
 			<div class="card" style="width: 18rem;">
-				<img class="card-img-top" src="{{asset('images/' ~ rubprod.photo)}}" alt="Card image cap">
-				<div class="card-body">
+				<img class="card-img-top" src="{{asset('images/' ~ rubprod.photo)}}" alt="rubprod.photo">
+				<div class="body-color card-body">
 					<h5 class="card-title">{{ rubprod.nom }}</h5>
 					<p class="card-text">{{ rubprod.description }}</p>
-					<p class="card-text">Référence :
-						{{ rubprod.reference }}</p>
-					<p>{{ rubprod.prix}}
-						€</p>
-
-
-					<a href="#" class="btn btn-primary">En savoir plus
-					</a>
+					<p class="card-text">Référence :{{ rubprod.reference }}</p>
+					<p>{{ rubprod.prix}}€</p>
+					<a href="#" class="btn btn-danger">Ajouter au panier</a>
 				</div>
 			</div>
 		{% endfor %}

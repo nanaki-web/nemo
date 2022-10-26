@@ -34,13 +34,13 @@
         <h1 class="promotion">Promotions-Nouveautés</h1>
         {% for produit in produits %}
 
-        <div class="card p-0 m-3 " style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{asset('images/' ~ produit.photo)}}" alt="{{produit.photo}}">
             <div class="card-body">
                 <h5 class="card-title">{{ produit.nom }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                 <p class="card-text">{{ produit.description }}</p>
-                <p>Référence : {{ produit.reference}}</p>
+                <p>Référence : {{ produit.reference }}</p>
                 <p>{{ produit.prix}} €</p>
             </div>
         </div>

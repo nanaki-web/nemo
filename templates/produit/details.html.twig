@@ -2,42 +2,75 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="carte card mb-3">
-		<div class="row g-0">
-			<div class="col-md-4">
-				<img src="#">
-			</div>
-			<div class="col-md-8">
-				<div class="row card-body">
-					<h5 class="card-title">{{produit.nom}}</h5>
-					<span id="spanprix">{{produit.prix}}€</span>
-					<p class="card-text">{{produit.description}}</p>
-					{# CHOIX QUANTITE #}
-					<div class="quantite mx-auto">
-						{# {% if produit.stock > 0 %}
-							<label for="quantite">Quantité</label>
-							<input type="number" id="qte" name="qte" min="1" max="1000" value="1">
-						</div>
-						{# AJOUTER AU PANIER #}
-						{#<div class="panier">
-							<span class="a-button-inner">
-								<i class="a-icon a-icon-cart"></i>
-								<input id="add-to-cart-button" name="submit.add-to-cart" title="Ajouter au panier" class="a-button-input" type="submit" value="Ajouter au panier" aria-labelledby="submit.add-to-cart-announce">
-								<span id="submit.add-to-cart-announce" class="a-button-text" aria-hidden="true"></span>
-							</span>
-						</div>
-						{# STOCK #}
-						{#<div class="stock">
-							<p class="card-text">
-								<small class="dispo" style="color:rgb(21,141,60)">En stock</small>
-							{% else %}
-								<small class="dispo" style="color:rgb(228,31,31)">Indisponible</small>
-							{% endif %} #}
-						</p>
+
+	<section class="container">
+		<div class="police-card card mb-3">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="{{asset('images/' ~ produit.photo)}}" class="img-fluid rounded-start" style="height:369px;" alt="{{produit.photo}}">
+				</div>
+				<div class="col-md-8">
+					<div class=" body-color card-body" style="height:369px;">
+						<h5 class="card-title">{{produit.nom}}-{{produit.taille}}</h5>
+						<p><span class= "card-font">Référence : </span>{{produit.reference}}</p>
+						<p class="card-text">Nom scientifique :
+							{{produit.NomScientifique}}</p>
+						<p class="card-text">Nom Commun :
+							{{produit.nomCommun}}</p>
+						<p class="card-text">Description :
+							{{produit.description}}</p>
+						<p class="card-text">Origine:
+							{{produit.origine}}</p>
+						<p class="card-text">Famille :
+							{{produit.famille}}</p>
+						<p class="card-text">PH :
+							{{produit.ph}}</p>
+						<p class="card-text">Température :
+							{{produit.temperature}}</p>
+						<p class="card-text">{{produit.prix}}€</p>
+						<a href="#" class="btn btn-danger">Ajouter au panier</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+
+
+	{#<div class="carte card mb-3">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="#">
+				</div>
+				<div class="col-md-8">
+					<div class="row card-body">
+						<h5 class="card-title">{{produit.nom}}</h5>
+						<span id="spanprix">{{produit.prix}}€</span>
+						<p class="card-text">{{produit.description}}</p>
+						{# CHOIX QUANTITE #}
+{#<div class="quantite mx-auto">{# {% if produit.stock > 0 %}
+																			<label for="quantite">Quantité</label>
+																			<input type="number" id="qte" name="qte" min="1" max="1000" value="1">
+																		</div>
+																		{# AJOUTER AU PANIER #}
+	{#<div class="panier">
+																				<span class="a-button-inner">
+																					<i class="a-icon a-icon-cart"></i>
+																					<input id="add-to-cart-button" name="submit.add-to-cart" title="Ajouter au panier" class="a-button-input" type="submit" value="Ajouter au panier" aria-labelledby="submit.add-to-cart-announce">
+																					<span id="submit.add-to-cart-announce" class="a-button-text" aria-hidden="true"></span>
+																				</span>
+																			</div>
+																			{# STOCK #}
+	{#<div class="stock">
+																				<p class="card-text">
+																					<small class="dispo" style="color:rgb(21,141,60)">En stock</small>
+																				{% else %}
+																					<small class="dispo" style="color:rgb(228,31,31)">Indisponible</small>
+																				{% endif %} #}
+	{#</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{#</div>
 	{# FIN CARD #}
 {% endblock %}

@@ -55,6 +55,27 @@ class Produit
     #[ORM\ManyToOne(inversedBy: 'produits')]
     private ?SsRubrique $rubrique = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nom_scientifique = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nom_commun = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $origine = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $famille = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ph = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $temperature = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $taille = null;
+
 
     public function __construct()
     {
@@ -224,6 +245,90 @@ class Produit
     public function setRubrique(?SsRubrique $rubrique): self
     {
         $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    public function getNomScientifique(): ?string
+    {
+        return $this->nom_scientifique;
+    }
+
+    public function setNomScientifique(string $nom_scientifique): self
+    {
+        $this->nom_scientifique = $nom_scientifique;
+
+        return $this;
+    }
+
+    public function getNomCommun(): ?string
+    {
+        return $this->nom_commun;
+    }
+
+    public function setNomCommun(string $nom_commun): self
+    {
+        $this->nom_commun = $nom_commun;
+
+        return $this;
+    }
+
+    public function getOrigine(): ?string
+    {
+        return $this->origine;
+    }
+
+    public function setOrigine(string $origine): self
+    {
+        $this->origine = $origine;
+
+        return $this;
+    }
+
+    public function getFamille(): ?string
+    {
+        return $this->famille;
+    }
+
+    public function setFamille(string $famille): self
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    public function getPh(): ?string
+    {
+        return $this->ph;
+    }
+
+    public function setPh(string $ph): self
+    {
+        $this->ph = $ph;
+
+        return $this;
+    }
+
+    public function getTemperature(): ?string
+    {
+        return $this->temperature;
+    }
+
+    public function setTemperature(string $temperature): self
+    {
+        $this->temperature = $temperature;
+
+        return $this;
+    }
+
+    public function getTaille(): ?string
+    {
+        return $this->taille;
+    }
+
+    public function setTaille(string $taille): self
+    {
+        $this->taille = $taille;
 
         return $this;
     }

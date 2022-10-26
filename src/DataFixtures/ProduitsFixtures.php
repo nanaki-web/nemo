@@ -47,6 +47,19 @@ class ProduitsFixtures extends Fixture implements DependentFixtureInterface// De
                 $prod->setRubrique($ssRubrique[mt_rand(0,count($ssRubrique)-1)]);
                 
             }
+
+            $prod->setNomScientifique($faker->sentence($nwords = 2, $varaibleNbWords = true));
+            $prod->setNomCommun($faker->sentence($nwords = 8, $varaibleNbWords = true));
+            $prod->setOrigine($faker->sentence($nwords = 8, $varaibleNbWords = true));
+            $prod->setFamille($faker->sentence($nwords = 1, $varaibleNbWords = true));
+            $prod->setPh($faker->sentence($nwords = 3, $varaibleNbWords = true));
+            $prod->setTemperature($faker->sentence($nwords = 3, $varaibleNbWords = true));
+            $prod->setTaille($faker->sentence($nwords = 4, $varaibleNbWords = true));
+
+
+
+
+
             
             $manager->persist($prod);
 

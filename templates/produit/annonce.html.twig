@@ -2,29 +2,48 @@
 
 {% block body %}
 
-	{% for row in listeannonces %}
+	<section class="container">
+		<div class="row">
+			{% for row in listeannonces %}
 				{# CARD #}
-					<div class="carte card mb-3">
-						<div class="row g-0">
-							<div class="col-md-4">
-								<a href="#">
-									<img src="#">
-								</a>
-							</div>
-							<div class="col-md-8">
-								<div class="row card-body">
-									<a href="{{ path('details',{id:row.id})}}">
-										<h5 class="card-title">{{row.nom}}</h5>
+				<div class="ImageAnnonce card " style="width: 18rem;">
+					<img class="cardImageAnnonce  card-img-top" src="{{asset('images/' ~ row.photo)}}" alt="{{row.photo}}">
+					<div class="fontColor card-body">
+						<a href="{{ path('details',{id:row.id})}}">
+							<h5 class="fontColor card-title">{{row.nom}}</h5>
+						</a>
+						<p class="fontColor">Taille :{{row.taille}}</p>
+						<p>Référence :{{row.reference}}</p>
+						<p id="">Prix : {{row.prix}}€</p>
+						<a href="#" class="btn btn-danger">Ajouter au panier</a>
+
+						
+					</div>
+				</div>
+			{% endfor %}
+			
+		</div>
+
+	</section>
+	{# <div class="card "style="width: 18rem;">
+							<div class="row ">
+								<div class="col-md-4">
+									<a href="#">
+										<img src= "{{asset('images/' ~ row.photo)}}" alt="{{row.photo}}">
 									</a>
-									<span id="spanprix">{{row.prix}}€</span>
-									{# STOCK #}
-									<div class="stock">
-									
-									</div>
 								</div>
-							</div>
-							{# FIN CARD #}
+								<div class="col-md-8">
+									<div class="row card-body">
+										<a href="{{ path('details',{id:row.id})}}">
+											<h5 class="card-title">{{row.nom}}</h5>
+										</a>
+										<span id="spanprix">{{row.prix}}€</span>
+										{# STOCK #}
+{# <div class="stock"></div>
 						</div>
 					</div>
-				{% endfor %}
+					{# FIN CARD #}
+	{# </div>
+						</div> #}
+
 {% endblock %}
