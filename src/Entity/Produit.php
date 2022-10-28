@@ -333,6 +333,9 @@ class Produit
         return $this;
     }
 
-    
+    public function __toString()//pour l'objet passe en string(methode magique)
+    {
+        return $this->nom;
+    }
     
 }
