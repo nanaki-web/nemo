@@ -26,11 +26,18 @@
 						<td>{{element.quantite}}</td>
 						<td>{{element.quantite * element.produit.prix}}€</td>
 						<td>
-                        <a href="{{path("ajouter",{id: element.produit.id})}}" class="btn btn-success"><i class="fa-solid fa-square-plus"></i></a>
-                        <a href="{{path("oter",{id: element.produit.id})}}" class="btn btn-warning"><i class="fa-regular fa-square-minus"></i></a>
-                        <a href="{{path("supprimer",{id: element.produit.id})}}" class="btn btn-danger"><i class="fa-solid fa-square-xmark"></i></a>
+							<a href="{{path("ajouter",{id: element.produit.id})}}" class="btn btn-success">
+								<i class="fa-solid fa-square-plus"></i>
+							</a>
+							<a href="{{path("oter",{id: element.produit.id})}}" class="btn btn-warning">
+								<i class="fa-regular fa-square-minus"></i>
+							</a>
+							<a href="{{path("supprimer",{id: element.produit.id})}}" class="btn btn-danger">
+								<i class="fa-solid fa-square-xmark"></i>
+							</a>
 
-                        </td>
+						</td>
+
 					</tr>
 				{% else %}
 					<tr>
@@ -40,12 +47,24 @@
 				{% endfor %}
 
 			</tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">Total</td>
-                    <td >{{total}}€</td>
-                </tr>
-            </tfoot>
+			<tfoot>
+				<tr>
+					<td colspan="3" class="text-right">HT:
+					</td>
+					<td>{{total|number_format(2, '.', ' ')}}
+						€</td>
+				</tr>
+				<tr>
+                        <td colspan="3"class="text-right">TVA: </td>
+                        <td>{{(prixTva|number_format(2, '.', ' '))}}€</td>
+                    </tr>
+                    
+				 <tr>
+                        <td colspan="3" class="text-right total">Total TTC: </td>
+                        <td class="total">{{(total + total * 0.05)|number_format(2, '.', ' ')}} €</td>
+                        
+                    </tr>
+			</tfoot>
 		</table>
 		{{dump()}}
 

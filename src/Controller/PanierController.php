@@ -21,6 +21,9 @@ class PanierController extends AbstractController
         // On "fabrique" les données
         $dataPanier = [];
         $total = 0;
+        $tva = 0.05;
+        $ttc = 0;
+
 
         foreach($panier as $id => $quantite){
             $produit = $produitRepository->find($id);
@@ -30,16 +33,32 @@ class PanierController extends AbstractController
                 
             ];
             $total += $produit->getPrix() * $quantite;
+            $prixTva = $total * $tva;
+            $ttc = $total + $prixTva;
+            
         }
 
         return $this->render('panier.html.twig', [
             'allRub' => $allRub,
             'dataPanier' => $dataPanier,
             'total' => $total,
+            'prixTva' => $prixTva,
+            'ttc' => $ttc,
             
         ]);
         
     }
+
+    //afficher le prix sur l'entete
+    public function panier_entete(SessionInterface $session,ProduitRepository $produitRepository){
+        
+      return $this->render('_partiels/_entete.html.twig');
+
+
+    }
+
+
+
     #[Route('/ajouter/{id}', name: 'ajouter')]
     public function ajouter(Produit $Produit, SessionInterface $session)
     {

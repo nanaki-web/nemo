@@ -5,9 +5,9 @@ namespace App\Controller;
 use App\Entity\SsRubrique;
 use App\Repository\ProduitRepository;
 use App\Repository\SsRubriqueRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/categorie')]
 class CategoriesController extends AbstractController
@@ -20,6 +20,7 @@ class CategoriesController extends AbstractController
         $ssRubriques = $ssRubriqueRepository->findOneBy(['slug' => $slug]);//filtre par le slug
         $enfants = $ssRubriqueRepository->findBy(['rubriqueParent' => $ssRubriques->getId()]);//recupere l'id des rubrique parent
         //dd($ssRubriques);
+      
         
         $produits = $produitRepository->findByRubParent($ssRubriques->getId());
 
@@ -29,7 +30,7 @@ class CategoriesController extends AbstractController
             'Ssrubriques' => $ssRubriques,
             'allRub' => $allRub,
             'enfants' => $enfants,
-            'rubprods' => $produits//recupere les produits par rubrique parent
+            'rubprods' => $produits,//recupere les produits par rubrique parent
             
         ]);
     }

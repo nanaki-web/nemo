@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Repository\ProduitRepository;
 use App\Repository\SsRubriqueRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/')]
 class AccueilController extends AbstractController
@@ -26,4 +25,9 @@ class AccueilController extends AbstractController
             
         ]);
     }
+
+    
+  
+  
+    
 }
