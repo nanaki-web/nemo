@@ -47,4 +47,27 @@ class PanierController extends AbstractController
         $this->panierServices->ajoutPanier($id, $session, $produitRepository);
         return $this->redirectToRoute("app_panier_index");
     }
+
+    #[Route('/oter/{id}', name: 'oter')]//supprime un element
+    public function oter($id,SessionInterface $session,ProduitRepository $produitRepository) : Response
+    {
+        $this->panierServices->oterPanier($id, $session, $produitRepository);
+        //dd($panierServices->getPanierContenir());
+        return $this->redirectToRoute("app_panier_index");
+    }
+
+    #[Route('/supprimer/{id}', name: 'supprimer')]//supprime une ligne (produit)
+    public function supprimer($id, SessionInterface $session,ProduitRepository $produitRepository): Response
+    {
+        $this->panierServices->supprimerPanier($id, $session, $produitRepository);
+        return $this->redirectToRoute("app_accueil");
+
+    }
+
+    #[Route('/effacerPanier/{id}', name: 'effacerPanier')]//supprime une ligne (produit)
+    public function effacerPanier(): Response
+    {
+        $this->panierServices->effacerPanier();
+        return $this->redirectToRoute("app_accueil");
+    }
 }

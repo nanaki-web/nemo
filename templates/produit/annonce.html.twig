@@ -15,7 +15,7 @@
 						<p class="fontColor">Taille :{{row.taille}}</p>
 						<p>Référence :{{row.reference}}</p>
 						<p id="">Prix : {{row.prix}}€</p>
-						<a href="#" class="btn btn-danger">Ajouter au panier</a>
+						<a href="{{path("ajouter",{id: row.id})}}" class="btn btn-danger">Ajouter au panier</a>
 
 						
 					</div>

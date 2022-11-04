@@ -29,7 +29,7 @@
 					<p class="card-text">{{ rubprod.description }}</p>
 					<p class="card-text">Référence :{{ rubprod.reference }}</p>
 					<p>{{ rubprod.prix}}€</p>
-					<a href="#" class="btn btn-danger">Ajouter au panier</a>
+					<a href="{{path("ajouter",{id: rubprod.id})}}" class="btn btn-danger">Ajouter au panier</a>
 				</div>
 			</div>
 		{% endfor %}
