@@ -21,7 +21,9 @@ class AccueilController extends AbstractController
        // dd($ssRubriques);
         return $this->render('accueil.html.twig', [
             'produits' => $produitRepository->dernierProduit(),
-            'allRub' => $ssRubriques
+            'allRub' => $ssRubriques,
+            
+            
             
         ]);
     }
