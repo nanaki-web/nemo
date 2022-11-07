@@ -64,10 +64,10 @@ class PanierController extends AbstractController
 
     }
 
-    #[Route('/effacerPanier/{id}', name: 'effacerPanier')]//supprime une ligne (produit)
-    public function effacerPanier(): Response
+    #[Route('effacerPanier', name: 'effacerPanier')]//supprime une ligne (produit)
+    public function effacerPanier(SessionInterface $session,ProduitRepository $produitRepository): Response
     {
-        $this->panierServices->effacerPanier();
+        $this->panierServices->effacerPanier($session, $produitRepository);
         return $this->redirectToRoute("app_accueil");
     }
 }

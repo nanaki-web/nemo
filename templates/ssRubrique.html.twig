@@ -19,13 +19,15 @@
 		</div>
 	</section>
 
-	<section class="annonce-rub container d-flex justify-content-evenly  " >
+	<section class="annonce-rub container d-flex justify-content-evenly  ">
 		{% for rubprod in rubprods %}
 
 			<div class="card" style="width: 18rem;">
 				<img class="card-img-top" src="{{asset('images/' ~ rubprod.photo)}}" alt="rubprod.photo">
 				<div class="body-color card-body">
-					<h5 class="card-title">{{ rubprod.nom }}</h5>
+					<a href="{{ path('details',{id:rubprod.id})}}">
+						<h5 class="card-title">{{ rubprod.nom }}</h5>
+					</a>
 					<p class="card-text">{{ rubprod.description }}</p>
 					<p class="card-text">Référence :{{ rubprod.reference }}</p>
 					<p>{{ rubprod.prix}}€</p>

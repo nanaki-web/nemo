@@ -8,6 +8,7 @@
 	<section class="container">
 		<div class="row">
 			<h1>Votre Commande</h1>
+			<a href="{{path("effacerPanier")}}" class="panier-effacerPanier btn btn-success">Supprimer votre panier</a> 
 		</div>
 	</section>
 	<section class="container">
@@ -35,10 +36,10 @@
 									<a href="{{path("ajouter",{id: element.produit.id})}}" class="btn btn-success">
 										<i class="fa-solid fa-square-plus"></i>
 									</a>
-									<a href="{#{{path("oter",{id: element.produit.id})}} #}" class="btn btn-warning">
+									<a href="{{path("oter",{id: element.produit.id})}}" class="btn btn-warning">
 										<i class="fa-regular fa-square-minus"></i>
 									</a>
-									{# <a href="{{path("supprimer",{id: element.produit.id})}}" class="btn btn-danger"> #}
+									<a href="{{path("supprimer",{id: element.produit.id})}}" class="btn btn-danger"> 
 									<i class="fa-solid fa-square-xmark"></i>
 								</td>
 							</tr>

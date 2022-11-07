@@ -106,12 +106,15 @@ class PanierServices
         if (isset($panier[$id])) { //si le panier n'existe pas
             //quantite du produit supérieur
             unset($panier[$id]); //détruit la variable
+            $this->modifierPanier($panier);
         }
     }
 
     //supprimer tout le panier
-    public function effacerPanier()
+    public function effacerPanier(Session $session, ProduitRepository $produitRepository)
     {
+        $this->session = $session;
+        $this->produitRepository = $produitRepository;
         $this->modifierPanier([]);
     }
 }

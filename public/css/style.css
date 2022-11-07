@@ -130,3 +130,9 @@ body {
     font-size: 0.9em;
     line-height:1em;
 }
+
+/*panier*/
+
+.panier-effacerPanier{
+    width: 20%;
+}

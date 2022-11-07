@@ -14,36 +14,14 @@
 						</a>
 						<p class="fontColor">Taille :{{row.taille}}</p>
 						<p>Référence :{{row.reference}}</p>
-						<p id="">Prix : {{row.prix}}€</p>
+						<p id="">Prix :
+							{{row.prix}}€</p>
 						<a href="{{path("ajouter",{id: row.id})}}" class="btn btn-danger">Ajouter au panier</a>
-
-						
 					</div>
 				</div>
 			{% endfor %}
-			
-		</div>
 
+		</div>
 	</section>
-	{# <div class="card "style="width: 18rem;">
-							<div class="row ">
-								<div class="col-md-4">
-									<a href="#">
-										<img src= "{{asset('images/' ~ row.photo)}}" alt="{{row.photo}}">
-									</a>
-								</div>
-								<div class="col-md-8">
-									<div class="row card-body">
-										<a href="{{ path('details',{id:row.id})}}">
-											<h5 class="card-title">{{row.nom}}</h5>
-										</a>
-										<span id="spanprix">{{row.prix}}€</span>
-										{# STOCK #}
-{# <div class="stock"></div>
-						</div>
-					</div>
-					{# FIN CARD #}
-	{# </div>
-						</div> #}
 
 {% endblock %}
