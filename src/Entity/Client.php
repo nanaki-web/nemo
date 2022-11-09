@@ -59,11 +59,6 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 15, nullable: true)]
     private ?string $siret = null;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commande::class)]
-    private Collection $commandes;
-
-    #[ORM\ManyToOne(inversedBy: 'clients')]
-    private ?Commercial $commercial = null;
 
     public function __construct()
     {
@@ -290,17 +285,6 @@ class Client implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCommercial(): ?Commercial
-    {
-        return $this->commercial;
-    }
-
-    public function setCommercial(?Commercial $commercial): self
-    {
-        $this->commercial = $commercial;
-
-        return $this;
-    }
 
     
 }
