@@ -21,9 +21,9 @@
                     <p id="icone-contact"><i class="fa-solid fa-user me-4 d-flex"></i></p>
                     <ul class="navbar-nav ">
                         <div class="d-flex ">
-                            <li class="li1 nav-item"><a class="nav-link" href="{{path('app_login')}}">Mon compte</a>
+                            <li class="li1 nav-item"><a class="nav-link" href="{#{{path('app_login')}}#}">Mon compte</a>
                             </li>
-                            <li class="li1 nav-item"><a class="nav-link" href="{{path('app_register')}}">Mon inscription</a></li>
+                            <li class="li1 nav-item"><a class="nav-link" href="{#{{path('app_register')}}#}">Mon inscription</a></li>
                             <li class="li1 nav-item">
                                 <a class="nav-link " id="icone-achat" href="{{path('app_panier_index')}}">Mon panier<i class="fa-solid fa-cart-shopping"></i>
                                 {% if app.session.get('panier') %}
